@@ -6,25 +6,21 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AppCompatActivity  {
+public class IntroActivity extends AppCompatActivity {
 
-    DrawClass drawView;
-    Button button;
+    Button StartButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        drawView = findViewById(R.id.draw_view);
-        button = findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
+        setContentView(R.layout.activity_intro);
+        StartButton = findViewById(R.id.button2);
+        StartButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, SecActivity.class);
+                Intent intent = new Intent(IntroActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
-
     }
-
-
 }

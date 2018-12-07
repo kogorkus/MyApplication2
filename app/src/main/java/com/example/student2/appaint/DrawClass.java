@@ -16,33 +16,28 @@ import android.widget.TextView;
 public class DrawClass extends View  {
 
 
-    float xCord = 0;
-    float yCord = 0;
+    private float xCord = 0;
+    private float yCord = 0;
 
     Hero hero;
 
     Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.hero);
-   /* public DrawClass(Context context) {
-        super(context);
-        setBackgroundColor(Color.GRAY);
-        hero = new Hero();
 
-    } */
 
 
     public DrawClass(Context context, AttributeSet attrs) {
         super(context, attrs);
         setBackgroundColor(Color.GRAY);
-        hero = new Hero();
+        hero = new Hero(getHeight()/2, getWidth()/2, icon);
     }
 
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        hero.icon = icon;
-        if (xCord != 0) hero.VectorMove(xCord, yCord);
-        if(hero.x > xCord + 5 || hero.x < xCord - 5 ) {
-            hero.x += hero.xStep;
-            hero.y += hero.yStep;
+
+        hero.VectorMove(xCord, yCord);
+        if(hero.getX() > xCord + 10 || hero.getX() < xCord - 10 ) {
+            hero.setX(hero.getX(), hero.getxStep());
+            hero.setY(hero.getY(), hero.getyStep());
             hero.draw(canvas);
         }
         else
